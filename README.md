@@ -11,16 +11,16 @@ Create input with cross button by id.
 import { inputWithCross } from 'custom-npm-input';
 
   inputWithCross({
-      id: 'input',
-      inputStyles: {
-        backgroundColor: 'red'
-      },
-      parentId: 'root',
-      onClick: () => {},
-      onFocus: () => {},
-      onBlur: () => {},
-      onChange: () => {},
-      onEnter: () => {},
+     id: 'input',
+     inputStyles: {
+       backgroundColor: 'red'
+     },
+     parentId: 'root',
+     onClick: () => {},
+     onFocus: () => {},
+     onBlur: () => {},
+     onChange: () => {},
+     onEnter: () => {},
   });
 ```
 

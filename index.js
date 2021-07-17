@@ -1,4 +1,4 @@
-import './index.css';
+import './styles/index.css';
 
 function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, onChange, onEnter }) {
 	if (!parentId) {
