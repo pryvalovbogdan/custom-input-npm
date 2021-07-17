@@ -19,7 +19,7 @@ function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, o
 	});
 
 	input.setAttribute('id', id);
-	input.addEventListener('onkeypress', e => {
+	input.addEventListener('input', e => {
 		if (!e.target.value) {
 			crossIcon.classList.remove('close');
 		} else {
