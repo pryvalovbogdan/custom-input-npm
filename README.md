@@ -7,8 +7,8 @@ Create input with cross button by id.
 `npm i custom-npm-input --save`
 
 # Usage
-
-`import { inputWithCross } from 'custom-npm-input';
+```javascript
+import { inputWithCross } from 'custom-npm-input';
 
   inputWithCross({
       id: 'input',
@@ -22,7 +22,7 @@ Create input with cross button by id.
       onChange: () => {},
       onEnter: () => {},
   });
-`
+```
 
 ## Options
 

@@ -39,4 +39,4 @@ function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, o
 	parentElem.appendChild(inputWrapper);
 }
 
-module.exports.inputWithCross = inputWithCross;
+export { inputWithCross };

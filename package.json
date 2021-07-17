@@ -1,6 +1,6 @@
 {
   "name": "custom-input-npm",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "input with cross button",
   "main": "index.js",
   "scripts": {
