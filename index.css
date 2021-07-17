@@ -1,24 +1,29 @@
 .close {
-    position: relative;
+  position: relative;
 }
 
 .close:after {
-    content: "";
-    height: 12px;
-    border-left: 1px solid #000;
-    position: absolute;
-    transform: rotate(45deg);
-    right: 6px;
-    top: 25%;
+  content: "";
+  height: 12px;
+  border-left: 1px solid #000;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 6px;
+  top: 25%;
 }
 
 .close:before {
-    content: "";
-    height: 12px;
-    border-left: 1px solid #000;
-    position: absolute;
-    transform: rotate(-45deg);
-    right: 6px;
-    top: 25%;
-    z-index: 2;
+  content: "";
+  height: 12px;
+  border-left: 1px solid #000;
+  position: absolute;
+  transform: rotate(-45deg);
+  right: 6px;
+  top: 25%;
+  z-index: 2;
+}
+
+
+#custom-input-wrapper {
+  width: 100%;
 }
