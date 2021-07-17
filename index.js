@@ -1,6 +1,6 @@
 import './index.css';
 
-function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, onChange }) {
+function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, onChange, onEnter }) {
 	if (!parentId) {
 		return new Error('You need to set parent id');
 	}
@@ -30,6 +30,7 @@ function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, o
 	input.addEventListener('focus', onFocus);
 	input.addEventListener('blur', onBlur);
 	input.addEventListener('change', onChange);
+	input.addEventListener('mouseenter', onEnter);
 
 	Object.assign(input.style, inputStyles);
 

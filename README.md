@@ -20,6 +20,7 @@ Create input with cross button by id.
       onFocus: () => {},
       onBlur: () => {},
       onChange: () => {},
+      onEnter: () => {},
   });
 `
 
@@ -32,3 +33,4 @@ Create input with cross button by id.
 *    *onFocus* - function,
 *    *onBlur* - function,
 *    *onChange* - function,
+*    *onEnter* - function,
