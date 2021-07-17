@@ -1,18 +1,41 @@
-function inputWithCross({ id, color, parentId, onClick, onFocus, onblur }) {
+import './index.css';
+
+function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, onChange }) {
 	if (!parentId) {
 		return new Error('You need to set parent id');
 	}
 
 	const parentElem = document.querySelector(`#${parentId}`);
-	let input = document.createElement('input');
+	const inputWrapper = document.createElement('div');
+	const crossIcon = document.createElement('span');
+	const input = document.createElement('input');
+
+	inputWrapper.setAttribute('id', 'custom-input-wrapper');
+
+	crossIcon.setAttribute('id', 'custom-input-cross-icon');
+	crossIcon.addEventListener('click', () => {
+		input.value = '';
+		crossIcon.classList.remove('close');
+	});
 
 	input.setAttribute('id', id);
-	input.onclick = onClick;
-	input.onfocus = onFocus;
-	input.onblur = onblur;
-	input.style.background = color;
+	input.addEventListener('change', e => {
+		if (!e.target.value) {
+			crossIcon.classList.remove('close');
+		} else {
+			crossIcon.classList.add('close');
+		}
+	});
+	input.addEventListener('click', onClick);
+	input.addEventListener('focus', onFocus);
+	input.addEventListener('blur', onBlur);
+	input.addEventListener('change', onChange);
 
-	parentElem.appendChild(input);
+	Object.assign(input.style, inputStyles);
+
+	inputWrapper.appendChild(input);
+	inputWrapper.appendChild(crossIcon);
+	parentElem.appendChild(inputWrapper);
 }
 
 module.exports.inputWithCross = inputWithCross;

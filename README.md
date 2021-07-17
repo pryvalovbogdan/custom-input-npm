@@ -8,16 +8,27 @@ Create input with cross button by id.
 
 # Usage
 
-import { inputWithCross } from 'custom-npm-input';
+`import { inputWithCross } from 'custom-npm-input';
 
-inputWithCross({
-    id: 'input',
-    onFocus: () => {},
-    color: 'red',
-});
+  inputWithCross({
+      id: 'input',
+      inputStyles: {
+        backgroundColor: 'red'
+      },
+      parentId: 'root',
+      onClick: () => {},
+      onFocus: () => {},
+      onBlur: () => {},
+      onChange: () => {},
+  });
+`
 
 ## Options
 
-*    *id*: 'input',
-*    *onFocus*: () => {},
-*    *color*: 'red',
+*    *id* - string (without #),
+*    *parentId* - string (without #),
+*    *inputStyles*- object with styles for input,
+*    *onClick* - function,
+*    *onFocus* - function,
+*    *onBlur* - function,
+*    *onChange* - function,
