@@ -1,6 +1,23 @@
 import './styles/index.css';
 
-function inputWithCross({ id, inputStyles, crossStyle, placeholder, parentId, onClick, onFocus, onBlur, onChange, onEnter }) {
+const defaultCrossStyle = {
+	lineStyle: '1px solid #000',
+	height: '12px',
+	positionRight: '6px',
+	positionTop: '25%',
+};
+
+function inputWithCross({
+  id,
+	inputStyles,
+	crossStyle = defaultCrossStyle,
+	placeholder = 'placeholder',
+	parentId, onClick,
+	onFocus,
+	onBlur,
+	onChange,
+	onEnter,
+}) {
 	if (!parentId) {
 		return new Error('You need to set parent id');
 	}
@@ -13,10 +30,10 @@ function inputWithCross({ id, inputStyles, crossStyle, placeholder, parentId, on
 	inputWrapper.setAttribute('id', 'custom-input-wrapper');
 
 	crossIcon.setAttribute('id', 'custom-input-cross-icon');
-	crossIcon.style.setProperty('--lineStyle', crossStyle.lineStyle ? crossStyle.lineStyle : '1px solid #000');
-	crossIcon.style.setProperty('--height', crossStyle.height ? crossStyle.height : '12px');
-	crossIcon.style.setProperty('--positionRight', crossStyle.positionRight ? crossStyle.positionRight : '6px');
-	crossIcon.style.setProperty('--positionTop', crossStyle.positionTop ? crossStyle.positionTop : '25%');
+	crossIcon.style.setProperty('--lineStyle', crossStyle.lineStyle);
+	crossIcon.style.setProperty('--height', crossStyle.height);
+	crossIcon.style.setProperty('--positionRight', crossStyle.positionRight);
+	crossIcon.style.setProperty('--positionTop', crossStyle.positionTop);
 	crossIcon.addEventListener('click', () => {
 		input.value = '';
 		crossIcon.classList.remove('close');
