@@ -4,7 +4,8 @@
   "description": "input with cross button",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish" : "uglifyjs -o index.min.js index.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/pryvalovbogdan/custom-input-npm/issues"
   },
-  "homepage": "https://github.com/pryvalovbogdan/custom-input-npm#readme"
+  "homepage": "https://github.com/pryvalovbogdan/custom-input-npm#readme",
+  "devDependencies": {
+    "uglify-js": "^3.13.10"
+  }
 }

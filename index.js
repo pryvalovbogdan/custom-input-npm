@@ -11,7 +11,7 @@ function inputWithCross({
   id,
 	inputStyles,
 	crossStyle = defaultCrossStyle,
-	placeholder = 'placeholder',
+	placeholder = '',
 	parentId, onClick,
 	onFocus,
 	onBlur,
