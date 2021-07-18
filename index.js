@@ -1,6 +1,6 @@
 import './styles/index.css';
 
-function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, onChange, onEnter }) {
+function inputWithCross({ id, inputStyles, crossStyle, placeholder, parentId, onClick, onFocus, onBlur, onChange, onEnter }) {
 	if (!parentId) {
 		return new Error('You need to set parent id');
 	}
@@ -13,12 +13,18 @@ function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, o
 	inputWrapper.setAttribute('id', 'custom-input-wrapper');
 
 	crossIcon.setAttribute('id', 'custom-input-cross-icon');
+	crossIcon.style.setProperty('--lineStyle', crossStyle.lineStyle ? crossStyle.lineStyle : '1px solid #000');
+	crossIcon.style.setProperty('--height', crossStyle.height ? crossStyle.height : '12px');
+	crossIcon.style.setProperty('--positionRight', crossStyle.positionRight ? crossStyle.positionRight : '6px');
+	crossIcon.style.setProperty('--positionTop', crossStyle.positionTop ? crossStyle.positionTop : '25%');
 	crossIcon.addEventListener('click', () => {
 		input.value = '';
 		crossIcon.classList.remove('close');
 	});
 
 	input.setAttribute('id', id);
+	input.setAttribute('class-name', 'custom-input-with-cross-btn');
+	input.placeholder = placeholder;
 	input.addEventListener('input', e => {
 		if (!e.target.value) {
 			crossIcon.classList.remove('close');
@@ -36,6 +42,11 @@ function inputWithCross({ id, inputStyles, parentId, onClick, onFocus, onBlur, o
 
 	inputWrapper.appendChild(input);
 	inputWrapper.appendChild(crossIcon);
+
+	if (!parentElem) {
+		return new Error(`There is no node with parentId:${parentId} in DOM`);
+	}
+
 	parentElem.appendChild(inputWrapper);
 }
 

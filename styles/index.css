@@ -1,29 +1,32 @@
+#custom-input-wrapper {
+  width: 100%;
+}
+
 .close {
   position: relative;
+  cursor: pointer;
 }
 
 .close:after {
   content: "";
-  height: 12px;
-  border-left: 1px solid #000;
+  height: var(--height);
+  border-left: var(--lineStyle);
   position: absolute;
   transform: rotate(45deg);
-  right: 6px;
-  top: 25%;
+  right: var(--positionRight);
+  top: var(--positionTop);
 }
 
 .close:before {
   content: "";
-  height: 12px;
-  border-left: 1px solid #000;
+  height: var(--height);
+  border-left: var(--lineStyle);
   position: absolute;
   transform: rotate(-45deg);
-  right: 6px;
-  top: 25%;
-  z-index: 2;
+  right: var(--positionRight);
+  top: var(--positionTop);
 }
 
-
-#custom-input-wrapper {
-  width: 100%;
+.custom-input-with-cross-btn {
+  cursor: auto;
 }
