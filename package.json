@@ -1,11 +1,11 @@
 {
   "name": "custom-input-npm",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "input with cross button",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "babel src -d lib && uglifyjs -o lib/index.min.js lib/index.js"
+    "prepublish": "babel src -d lib && uglifyjs -o lib/index.js lib/index.js"
   },
   "repository": {
     "type": "git",
