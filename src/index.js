@@ -1,4 +1,4 @@
-import './styles/index.css';
+import '../styles/index.css';
 
 const defaultCrossStyle = {
 	lineStyle: '1px solid #000',
