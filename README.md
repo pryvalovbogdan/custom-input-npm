@@ -4,11 +4,11 @@ Create input with cross button by id.
 
 # Installation
 
-`npm i custom-npm-input --save`
+`npm i custom-input-npm`
 
 # Usage
 ```javascript
-import { inputWithCross } from 'custom-npm-input';
+import { inputWithCross } from 'custom-input-npm';
 
   inputWithCross({
      id: 'input',
@@ -26,7 +26,7 @@ import { inputWithCross } from 'custom-npm-input';
 
 To change cross button style pass in props crossStyle obj.
 ```javascript
-import { inputWithCross } from 'custom-npm-input';
+import { inputWithCross } from 'custom-input-npm';
 
   inputWithCross({
      id: 'input',
