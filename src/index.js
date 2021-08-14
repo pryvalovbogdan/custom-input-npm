@@ -1,4 +1,5 @@
 import '../styles/index.css';
+import { setDropdownOptions, customizeDropdown, customizeCrossIcon, customiseInput } from './helpers';
 
 const defaultCrossStyle = {
 	lineStyle: '1px solid #000',
@@ -8,15 +9,19 @@ const defaultCrossStyle = {
 };
 
 function inputWithCross({
-  id,
+	id,
 	inputStyles,
 	crossStyle = defaultCrossStyle,
 	placeholder = '',
-	parentId, onClick,
+	parentId,
+	onClick,
 	onFocus,
 	onBlur,
 	onChange,
 	onEnter,
+	defaultValue = '',
+	withDropdown,
+	dropDownProps,
 }) {
 	if (!parentId) {
 		return new Error('You need to set parent id');
@@ -26,43 +31,72 @@ function inputWithCross({
 	const inputWrapper = document.createElement('div');
 	const crossIcon = document.createElement('span');
 	const input = document.createElement('input');
+	const dropdown = document.createElement('div');
 
 	inputWrapper.setAttribute('id', 'custom-input-wrapper');
 
-	crossIcon.setAttribute('id', 'custom-input-cross-icon');
-	crossIcon.style.setProperty('--lineStyle', crossStyle.lineStyle);
-	crossIcon.style.setProperty('--height', crossStyle.height);
-	crossIcon.style.setProperty('--positionRight', crossStyle.positionRight);
-	crossIcon.style.setProperty('--positionTop', crossStyle.positionTop);
+	customizeCrossIcon(crossIcon, crossStyle);
+
 	crossIcon.addEventListener('click', () => {
 		input.value = '';
 		crossIcon.classList.remove('close');
+
+		setDropdownOptions(dropDownProps, input, crossIcon, dropdown);
 	});
 
-	input.setAttribute('id', id);
-	input.setAttribute('class-name', 'custom-input-with-cross-btn');
-	input.placeholder = placeholder;
 	input.addEventListener('input', e => {
 		if (!e.target.value) {
 			crossIcon.classList.remove('close');
+
+			setDropdownOptions(dropDownProps, input, crossIcon, dropdown);
 		} else {
 			crossIcon.classList.add('close');
+
+			if (dropDownProps.options && dropDownProps.options.length) {
+				setDropdownOptions(dropDownProps, input, crossIcon, dropdown, e.target.value);
+			}
 		}
 	});
-	input.addEventListener('click', onClick);
-	input.addEventListener('focus', onFocus);
-	input.addEventListener('blur', onBlur);
-	input.addEventListener('change', onChange);
-	input.addEventListener('mouseenter', onEnter);
 
-	Object.assign(input.style, inputStyles);
+	input.addEventListener('focus', () => {
+		if (dropDownProps.options && dropDownProps.options.length) {
+			dropdown.style.display = 'block';
+		}
+	});
+
+	customiseInput(
+		input,
+		id,
+		placeholder,
+		defaultValue,
+		onClick,
+		onFocus,
+		onBlur,
+		onChange,
+		onEnter,
+		inputStyles,
+	);
 
 	inputWrapper.appendChild(input);
 	inputWrapper.appendChild(crossIcon);
 
+	if (withDropdown) {
+		customizeDropdown(dropdown, inputStyles, dropDownProps);
+
+		setDropdownOptions(dropDownProps, input, crossIcon, dropdown);
+
+		inputWrapper.appendChild(dropdown);
+	}
+
 	if (!parentElem) {
 		return new Error(`There is no node with parentId:${parentId} in DOM`);
 	}
+
+	window.document.addEventListener('click', e => {
+		if (e.target !== document.querySelector('#custom-input')) {
+			dropdown.style.display = 'none';
+		}
+	});
 
 	parentElem.appendChild(inputWrapper);
 }

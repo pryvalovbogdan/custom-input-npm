@@ -1,5 +1,6 @@
 #custom-input-wrapper {
   width: 100%;
+  position: relative;
 }
 
 .close {
@@ -29,4 +30,15 @@
 
 .custom-input-with-cross-btn {
   cursor: auto;
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: var(--inputHeight);
+  width: var(--dropdownWidth);
+  height: var(--dropdownHeight);
+  background: #fff;
+  max-height: 150px;
+  overflow: scroll;
 }

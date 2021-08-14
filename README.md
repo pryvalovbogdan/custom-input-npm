@@ -21,6 +21,11 @@ import { inputWithCross } from 'custom-input-npm';
      onBlur: () => {},
      onChange: () => {},
      onEnter: () => {},
+     withDropdown: true,
+     dropDownProps: {
+       options: ['yes', 'no', 'hmm'],
+       styles: {},
+     },
   });
 ```
 
@@ -40,6 +45,22 @@ import { inputWithCross } from 'custom-input-npm';
   });
 ```
 
+To add dropdown to input add prop withDropdown and 
+dropDownProps there must be options an array if it empty dropdown will not shown.
+```javascript
+import { inputWithCross } from 'custom-input-npm';
+
+  inputWithCross({
+     id: 'input',
+     parentId: 'root',
+     withDropdown: true,
+     dropDownProps: {
+       options: ['yes', 'no', 'hmm'],
+       styles: {},
+     },
+  });
+```
+
 ## Options
 
 *    *id* - string (without #),
@@ -52,3 +73,6 @@ crossStyle properties: lineStyle, height, positionRight, positionTop, all should
 *    *onBlur* - function,
 *    *onChange* - function,
 *    *onEnter* - function,
+*    *withDropdown*- boolean to show dropdown,
+*    *dropDownProps*- object with options and styles for dropdown, 
+dropDownProps properties: options an array, styles an object.
